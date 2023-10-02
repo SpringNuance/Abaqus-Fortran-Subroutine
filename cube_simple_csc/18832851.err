@@ -1,0 +1,32 @@
+ 
+Abaqus 2022  is now in use 
+ 
+NOTICE.  Abaqus licenses used on CSC's servers are only for 
+students and personnel from Finnish universities and polytechnics. 
+ 
+
+Lmod is automatically replacing "gcc/11.3.0" with
+"intel-oneapi-compilers-classic/2021.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) intel-oneapi-mkl/2022.1.0     2) openmpi/4.1.4
+
+Checkout succeeded: standard/6FB273EE1EBC
+	License file: 1761@license1.csc.fi
+	License Server: 1761@license1.csc.fi
+Checkout succeeded: parallel/713860CAACB2
+	License file: 1761@license1.csc.fi
+	License Server: 1761@license1.csc.fi
+Abaqus License Manager checked out the following licenses:
+Abaqus/Standard checked out 23 tokens from Flexnet server license1.csc.fi.
+<577 out of 600 licenses remain available>.
+Intel(R) Fortran Intel(R) 64 Compiler Classic for applications running on Intel(R) 64, Version 2021.6.0 Build 20220226_000000
+Copyright (C) 1985-2022 Intel Corporation.  All rights reserved.
+
+UMAT.f90(2): remark #15009: umat_ has been targeted for automatic cpu dispatch
+Intel(R) Fortran Intel(R) 64 Compiler Classic for applications running on Intel(R) 64, Version 2021.6.0 Build 20220226_000000
+Copyright (C) 1985-2022 Intel Corporation.  All rights reserved.
+
+/appl/spack/v018/install-tree/gcc-8.5.0/binutils-2.38-5o2cqc/bin/ld: /appl/soft/eng/simulia/EstProducts/2022/linux_a64/code/lib/libstandardU_static.a(fric.o): warning: relocation against `fric_' in read-only section `.trace'
+/appl/spack/v018/install-tree/gcc-8.5.0/binutils-2.38-5o2cqc/bin/ld: warning: creating DT_TEXTREL in a shared object

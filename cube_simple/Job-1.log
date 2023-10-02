@@ -5,35 +5,62 @@ Abaqus License Manager checked out the following licenses:
 Abaqus/Standard checked out 5 tokens from Flexnet server lic-abaqus.aalto.fi.
 <95 out of 100 licenses remain available>.
 Begin Compiling Abaqus/Standard User Subroutines
-2023-10-02 5:10:10 PM
+2023-10-02 10:17:49 PM
 Intel(R) Fortran Intel(R) 64 Compiler Classic for applications running on IA-32, Version 2021.10.0 Build 20230609_000000
 Copyright (C) 1985-2023 Intel Corporation.  All rights reserved.
 
 ifort: command line warning #10212: /fp:precise evaluates in source precision with Fortran.
-UMAT.for(1): error #5149: Illegal character in statement label field  [S]
-SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD,
+UMAT.for(2): error #5149: Illegal character in statement label field  [S]
+SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD, &
 ^
-UMAT.for(1): error #5149: Illegal character in statement label field  [U]
-SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD,
+UMAT.for(2): error #5149: Illegal character in statement label field  [U]
+SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD, &
 -^
-UMAT.for(1): error #5149: Illegal character in statement label field  [B]
-SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD,
+UMAT.for(2): error #5149: Illegal character in statement label field  [B]
+SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD, &
 --^
-UMAT.for(1): error #5149: Illegal character in statement label field  [R]
-SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD,
+UMAT.for(2): error #5149: Illegal character in statement label field  [R]
+SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD, &
 ---^
-UMAT.for(1): error #5149: Illegal character in statement label field  [O]
-SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD,
+UMAT.for(2): error #5149: Illegal character in statement label field  [O]
+SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD, &
 ----^
-UMAT.for(1): error #5118: First statement in file must not be continued
-SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD,
+UMAT.for(2): error #5118: First statement in file must not be continued
+SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD, &
 -----^
-UMAT.for(5): error #5082: Syntax error, found END-OF-STATEMENT when expecting one of: ( % . = =>
-     4 CELENT,DFGRD0,DFGRD1,NOEL,NPT,LAYER,KSPT,JSTEP,KINC)
+UMAT.for(2): error #5195: Continuation character illegal in this column in fixed form program
+SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD, &
+--------------------------------------------------^
+UMAT.for(3): error #5195: Continuation character illegal in this column in fixed form program
+     RPL,DDSDDT,DRPLDE,DRPLDT,&
+------------------------------^
+UMAT.for(4): error #5195: Continuation character illegal in this column in fixed form program
+     STRAN,DSTRAN,TIME,DTIME,TEMP,DTEMP,PREDEF,DPRED,CMNAME,&
+------------------------------------------------------------^
+UMAT.for(5): error #5195: Continuation character illegal in this column in fixed form program
+     NDI,NSHR,NTENS,NSTATV,PROPS,NPROPS,COORDS,DROT,PNEWDT,&
 -----------------------------------------------------------^
+UMAT.for(8): error #5287: Invalid space between kind param and character constant.
+     INCLUDE 'ABA_PARAM.INC'
+-------------^
+UMAT.for(8): error #5144: Invalid character_kind_parameter. No underscore
+     INCLUDE 'ABA_PARAM.INC'
+----------------------------^
+UMAT.for(8): error #5082: Syntax error, found IDENTIFIER 'NCLUDE' when expecting one of: ) ( , : <END-OF-STATEMENT> ; % [ . = / =>
+     INCLUDE 'ABA_PARAM.INC'
+------^
 UMAT.for(22): error #5149: Illegal character in statement label field  [o]
     one = 1.0	
 ----^
+UMAT.for(11): error #5195: Continuation character illegal in this column in fixed form program
+      DIMENSION STRESS(NTENS),STATEV(NSTATV), &
+----------------------------------------------^
+UMAT.for(12): error #5195: Continuation character illegal in this column in fixed form program
+     DDSDDE(NTENS,NTENS),DDSDDT(NTENS),DRPLDE(NTENS), &
+------------------------------------------------------^
+UMAT.for(13): error #5195: Continuation character illegal in this column in fixed form program
+     STRAN(NTENS),DSTRAN(NTENS),TIME(2),PREDEF(1),DPRED(1), &
+------------------------------------------------------------^
 UMAT.for(23): error #5149: Illegal character in statement label field  [t]
     two = 2.0
 ----^
@@ -41,28 +68,28 @@ UMAT.for(24): error #5149: Illegal character in statement label field  [t]
     three = 3.0
 ----^
 UMAT.for(30): error #5149: Illegal character in statement label field  [E]
-    EMOD = PROPS(1) 
+    EMOD=PROPS(1) 
 ----^
 UMAT.for(31): error #5149: Illegal character in statement label field  [E]
-    ENU = PROPS(2) 
+    ENU=PROPS(2) 
 ----^
 UMAT.for(32): error #5149: Illegal character in statement label field  [E]
-    EBULK3 = EMOD/(one-two*ENU)
+    EBULK3=EMOD/(one-two*ENU)
 ----^
 UMAT.for(33): error #5149: Illegal character in statement label field  [E]
-    EG2 = EMOD/(one+ENU) 
+    EG2=EMOD/(one+ENU) 
 ----^
 UMAT.for(34): error #5149: Illegal character in statement label field  [E]
-    EG = EG2/two 
+    EG=EG2/two 
 ----^
 UMAT.for(35): error #5149: Illegal character in statement label field  [E]
-    ELAM (EBULK3 - EG2)/three
+    ELAM=(EBULK3-EG2)/three
 ----^
 UMAT.for(41): error #5149: Illegal character in statement label field  [D]
-    DO I = 1,NDI
+    DO K1=1, NDI
 ----^
-UMAT.for(10): error #5082: Syntax error, found ',' when expecting one of: ( % . = =>
-      DIMENSION STRESS(NTENS),STATEV(NSTATV),
+UMAT.for(11): error #5082: Syntax error, found ',' when expecting one of: ( % . = =>
+      DIMENSION STRESS(NTENS),STATEV(NSTATV), &
 -----------------------------^
 UMAT.for(22): error #5082: Syntax error, found IDENTIFIER 'E' when expecting one of: :: ) ( , : * <END-OF-STATEMENT> ; . % (/ + - [ ] /) . = ' ** / ...
     one = 1.0	
@@ -71,36 +98,9 @@ UMAT.for(46): error #5149: Illegal character in statement label field  [E]
     EN DO
 ----^
 UMAT.for(48): error #5149: Illegal character in statement label field  [D]
-    DO K1 = NDI+1,NTENS
+    DO K1=NDI+1, NTENS
 ----^
-UMAT.for(48): error #5082: Syntax error, found '=' when expecting one of: :: ) ( , : * <END-OF-STATEMENT> ; . % (/ + - [ ] /) . ' ** / ...
-    DO K1 = NDI+1,NTENS
-----------^
-UMAT.for(48): error #5082: Syntax error, found END-OF-STATEMENT when expecting one of: :: ) ( , : * . % + - [ . = ** / // .LT. < .LE. <= .EQ. == ...
-    DO K1 = NDI+1,NTENS
------------------------^
-UMAT.for(50): error #5149: Illegal character in statement label field  [E]
-    EN DO
-----^
-UMAT.for(56): error #5149: Illegal character in statement label field  [D]
-    DO K1 = 1,NTENS
-----^
-UMAT.for(56): error #5082: Syntax error, found '=' when expecting one of: :: ) ( , : * <END-OF-STATEMENT> ; . % (/ + - [ ] /) . ** / // ...
-    DO K1 = 1,NTENS
-----------^
-UMAT.for(56): error #5082: Syntax error, found END-OF-STATEMENT when expecting one of: :: ) ( , : * . % + - [ . = ** / // .LT. < .LE. <= .EQ. == ...
-    DO K1 = 1,NTENS
--------------------^
-UMAT.for(60): error #5149: Illegal character in statement label field  [E]
-    EN DOTURND
-----^
-UMAT.for(63): error #5082: Syntax error, found END-OF-FILE when expecting one of: <LABEL> <END-OF-STATEMENT> ; <IDENTIFIER> TYPE MODULE ELEMENTAL IMPURE NON_RECURSIVE ...
-C
--^
-UMAT.for(43): error #6410: This name has not been declared as an array or a function.   [DDSDDE]
-            DDSDDE(K1,K2) = ELAM
-------------^
-C:\Users\nguyenb5\AppData\Local\Temp\244813.i(74): catastrophic error: Too many errors, exiting
+C:\Users\nguyenb5\AppData\Local\Temp\2313613.i(50): catastrophic error: Too many errors, exiting
 compilation aborted for UMAT.for (code 1)
-Abaqus Error: Problem during compilation - \\home.org.aalto.fi\nguyenb5\data\Desktop\Abaqus-Fortran-Subroutine\cube_simple\UMAT.for
+Abaqus Error: Problem during compilation - \\home.org.aalto.fi\nguyenb5\data\Desktop\Abaqus-Fortran-Subroutine\cube_simple_2\UMAT.for
 Abaqus/Analysis exited with errors

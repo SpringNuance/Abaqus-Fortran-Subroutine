@@ -1,0 +1,105 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=20.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(1.0, 1.0))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='Cube', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Cube'].BaseSolidExtrude(depth=1.0, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Material-1')
+mdb.models['Model-1'].materials['Material-1'].UserMaterial(mechanicalConstants=
+    (200000000000.0, 0.3))
+mdb.models['Model-1'].materials['Material-1'].Depvar(n=2)
+mdb.models['Model-1'].HomogeneousSolidSection(material='Material-1', name=
+    'Section-1', thickness=None)
+mdb.models['Model-1'].parts['Cube'].Set(cells=
+    mdb.models['Model-1'].parts['Cube'].cells.getSequenceFromMask(('[#1 ]', ), 
+    ), name='Set-1')
+mdb.models['Model-1'].parts['Cube'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Cube'].sets['Set-1'], sectionName='Section-1', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=OFF, name='Cube-1', part=
+    mdb.models['Model-1'].parts['Cube'])
+mdb.models['Model-1'].StaticStep(initialInc=0.5, name='Step-1', nlgeom=ON, 
+    previous='Initial')
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['Cube-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ), name='Set-1')
+mdb.models['Model-1'].XsymmBC(createStepName='Step-1', localCsys=None, name=
+    'BC-1', region=mdb.models['Model-1'].rootAssembly.sets['Set-1'])
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['Cube-1'].faces.getSequenceFromMask(
+    ('[#20 ]', ), ), name='Set-2')
+mdb.models['Model-1'].ZsymmBC(createStepName='Step-1', localCsys=None, name=
+    'BC-2', region=mdb.models['Model-1'].rootAssembly.sets['Set-2'])
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['Cube-1'].faces.getSequenceFromMask(
+    ('[#8 ]', ), ), name='Set-3')
+mdb.models['Model-1'].YsymmBC(createStepName='Step-1', localCsys=None, name=
+    'BC-3', region=mdb.models['Model-1'].rootAssembly.sets['Set-3'])
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['Cube-1'].faces.getSequenceFromMask(
+    ('[#4 ]', ), ), name='Set-4')
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Step-1', 
+    distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None, name=
+    'BC-4', region=mdb.models['Model-1'].rootAssembly.sets['Set-4'], u1=0.001, 
+    u2=UNSET, u3=UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].rootAssembly.setElementType(elemTypes=(ElemType(
+    elemCode=C3D8R, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    kinematicSplit=AVERAGE_STRAIN, hourglassControl=ENHANCED, 
+    distortionControl=DEFAULT), ElemType(elemCode=C3D6, elemLibrary=STANDARD), 
+    ElemType(elemCode=C3D4, elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].rootAssembly.instances['Cube-1'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ), ))
+mdb.models['Model-1'].rootAssembly.seedPartInstance(deviationFactor=0.1, 
+    minSizeFactor=0.1, regions=(
+    mdb.models['Model-1'].rootAssembly.instances['Cube-1'], ), size=1.0)
+mdb.models['Model-1'].rootAssembly.generateMesh(regions=(
+    mdb.models['Model-1'].rootAssembly.instances['Cube-1'], ))
+# Save by nguyenb5 on 2023_10_02-22.15.46; build 2022.HF5 2022_09_26-18.03.59 176852
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='Job-1', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, resultsFormat=
+    ODB, scratch='', type=ANALYSIS, userSubroutine=
+    'Z:\\Desktop\\Abaqus-Fortran-Subroutine\\cube_simple_2\\UMAT.for', 
+    waitHours=0, waitMinutes=0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'Problem during compilation - \\\\home.org.aalto.fi\\nguyenb5\\data\\Desktop\\Abaqus-Fortran-Subroutine\\cube_simple_2\\UMAT.for', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'Problem during compilation - \\\\home.org.aalto.fi\\nguyenb5\\data\\Desktop\\Abaqus-Fortran-Subroutine\\cube_simple_2\\UMAT.for', 
+    'jobName': 'Job-1'})
+# Save by nguyenb5 on 2023_10_02-22.25.23; build 2022.HF5 2022_09_26-18.03.59 176852
+# Save by nguyenb5 on 2023_10_02-22.25.29; build 2022.HF5 2022_09_26-18.03.59 176852

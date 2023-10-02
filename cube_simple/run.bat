@@ -1,1 +1,0 @@
-abq2018_fortran job=geometry user=UMAT interactive cpus=2

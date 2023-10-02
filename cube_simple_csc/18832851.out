@@ -1,0 +1,176 @@
+Processing time = 0 second(s).
+CL: Attempting: 23 tokens of standard
+CL: Attempting 23 tokens from 1761@license1.csc.fi
+CL: Number of licenses on 1761@license1.csc.fi: 600
+CL: Number of licenses in use on 1761@license1.csc.fi: 0
+CL: Attempting: 1 tokens of parallel
+CL: Attempting 1 tokens from 1761@license1.csc.fi
+CL: Number of licenses on 1761@license1.csc.fi: 16384
+CL: Number of licenses in use on 1761@license1.csc.fi: 0
+CL: Test checkout: 23 "standard" v62.2
+INFO: ABA_USE_MPI is set.  dmpCT_rcp/dmpCT_rsh tools will be used for remote shell and copy operations.
+Abaqus Warning: MPI_REMSH is not defined.  Setting value to -> ssh
+Analysis initiated from SIMULIA established products
+Abaqus JOB geometry
+Abaqus 2022
+> Begin MPI prepare 
+platform              : lnx86_64
+cpus                  : 40
+mp_mpi_implementation : PMPI
+mp_mpirun_path        : /appl/soft/eng/simulia/EstProducts/2022/linux_a64/code/bin/SMAExternal/pmpi/bin/mpirun
+mp_host_list          : (('r07c01.bullx', 40),)
+mp_file_system        : (SHARED, SHARED)
+mp_rsh_command        : ssh -n -l nguyenb5 %H %C
+local host            : ('r07c01-mn.bullx', 'r07c01-mn', '10.140.33.118', 'r07c01.bullx', 'r07c01', '10.140.1.134')
+> End MPI prepare  -- 00:00:00
+DriverLM command: /appl/soft/eng/simulia/EstProducts/2022/linux_a64/code/bin/eliT_DriverLM -job geometry -indir /scratch/project_2007935/subroutine -standard -verbose -cpus 40 -tmpdir /scratch/project_2007935/subroutine/tmp_18832851/nguyenb5_geometry_2149883 -lmlog
+DriverLM status: 0
+Umbrella port: r07c01.bullx 40635
+                      Platform: lnx86_64
+             Source extensions: f for f90 F90 c C c\+\+ cpp
+              Object extension: o
+           Shared library name: libstandardU.so
+  User subroutine archive file: libstandardU_static.a
+   Utility shared library file: standardB
+               Threads Library: ABQSMAAbuBasicUtils
+                   DMP Library: ABQDMP_Core
+                 MPI Libraries: -lmpiCC
+              MPI Search Paths: -L/appl/soft/eng/simulia/EstProducts/2022/linux_a64/code/bin/SMAExternal/pmpi/lib/linux_amd64
+             MPI Include Paths: -I/appl/soft/eng/simulia/EstProducts/2022/linux_a64/code/bin/SMAExternal/pmpi/include
+Begin Compiling Abaqus/Standard User Subroutines
+Mon 02 Oct 2023 10:20:38 PM EEST
+Compiling UMAT.f90
+Current directory: /scratch/project_2007935/subroutine/tmp_18832851/nguyenb5_geometry_2149883
+File to compile: /scratch/project_2007935/subroutine/tmp_18832851/nguyenb5_geometry_2149883/UMAT.f90
+>>> ifort -V -c -fpp -fPIC -extend-source -DABQ_LNX86_64 -DABQ_FORTRAN -auto -pc64 -align array64byte -prec-div -prec-sqrt -fp-model precise -fimf-arch-consistency=true -mP2OPT_hpo_vec_divbyzero=F -no-fma -fp-speculation=safe -fprotect-parens -fstack-protector-strong -reentrancy threaded -msse3 -axcore-avx2,avx -WB -I/scratch/project_2007935/subroutine -I/appl/soft/eng/simulia/EstProducts/2022 -DDPX -I. -I/appl/soft/eng/simulia/EstProducts/2022/linux_a64/code/include -I/appl/soft/eng/simulia/EstProducts/2022/linux_a64/../SMAUsubs/PublicInterfaces -I/appl/soft/eng/simulia/EstProducts/2022/linux_a64/code/bin/SMAExternal/pmpi/include UMAT.f90
+ Intel(R) Fortran 2021.6.0-1299
+End Compiling Abaqus/Standard User Subroutines
+Begin Linking Abaqus/Standard User Subroutines
+export.sym: ['-Wl,-u,contactperm_']
+export.sym: ['-Wl,-u,creep_']
+export.sym: ['-Wl,-u,dflow_']
+export.sym: ['-Wl,-u,dflux_']
+export.sym: ['-Wl,-u,disp_']
+export.sym: ['-Wl,-u,dload_']
+export.sym: ['-Wl,-u,film_']
+export.sym: ['-Wl,-u,flow_']
+export.sym: ['-Wl,-u,fric_']
+export.sym: ['-Wl,-u,fric_coef_']
+export.sym: ['-Wl,-u,gapcon_']
+export.sym: ['-Wl,-u,gapelectr_']
+export.sym: ['-Wl,-u,hardini_']
+export.sym: ['-Wl,-u,hetval_']
+export.sym: ['-Wl,-u,mpc_']
+export.sym: ['-Wl,-u,orient_']
+export.sym: ['-Wl,-u,rsurfu_']
+export.sym: ['-Wl,-u,sdvini_']
+export.sym: ['-Wl,-u,sigini_']
+export.sym: ['-Wl,-u,uamp_']
+export.sym: ['-Wl,-u,uanisohyper_inv_']
+export.sym: ['-Wl,-u,uanisohyper_strain_']
+export.sym: ['-Wl,-u,ucohesiveoffset_']
+export.sym: ['-Wl,-u,ucomputeerefhysteresis_']
+export.sym: ['-Wl,-u,ucomputeporoevolelectrolyte_']
+export.sym: ['-Wl,-u,uconcentrationtensor_']
+export.sym: ['-Wl,-u,ucorr_']
+export.sym: ['-Wl,-u,ucosimulation_']
+export.sym: ['-Wl,-u,ucoupledconstresp_']
+export.sym: ['-Wl,-u,ucrack_']
+export.sym: ['-Wl,-u,ucreepnetwork_']
+export.sym: ['-Wl,-u,udamagemf_']
+export.sym: ['-Wl,-u,udecurr_']
+export.sym: ['-Wl,-u,udecurrent_']
+export.sym: ['-Wl,-u,udempotential_']
+export.sym: ['-Wl,-u,udmgini_']
+export.sym: ['-Wl,-u,udsecurrent_']
+export.sym: ['-Wl,-u,ueigenstrain_']
+export.sym: ['-Wl,-u,uel_']
+export.sym: ['-Wl,-u,uelemdresp_']
+export.sym: ['-Wl,-u,uelmat_']
+export.sym: ['-Wl,-u,uepactivationfacet_']
+export.sym: ['-Wl,-u,uepactivationsetup_']
+export.sym: ['-Wl,-u,uepactivationvol_']
+export.sym: ['-Wl,-u,uexpan_']
+export.sym: ['-Wl,-u,uexternaldb_']
+export.sym: ['-Wl,-u,ufield_']
+export.sym: ['-Wl,-u,ufluid_']
+export.sym: ['-Wl,-u,ufluidconnectorloss_']
+export.sym: ['-Wl,-u,ufluidconnectorvalve_']
+export.sym: ['-Wl,-u,ufluidleakoff_']
+export.sym: ['-Wl,-u,ufluidpipefriction_']
+export.sym: ['-Wl,-u,ugens_']
+export.sym: ['-Wl,-u,uhard_']
+export.sym: ['-Wl,-u,uhypel_']
+export.sym: ['-Wl,-u,uhyper_']
+export.sym: ['-Wl,-u,uhyper_stretch_']
+export.sym: ['-Wl,-u,uinter_']
+export.sym: ['-Wl,-u,uintfluxgen_']
+export.sym: ['-Wl,-u,umasfl_']
+export.sym: ['-Wl,-u,umat_']
+export.sym: ['-Wl,-u,umat_sst_']
+export.sym: ['-Wl,-u,umatht_']
+export.sym: ['-Wl,-u,umdflux_']
+export.sym: ['-Wl,-u,umdfluxsetup_']
+export.sym: ['-Wl,-u,umeshmotion_']
+export.sym: ['-Wl,-u,umixmodefatigue_']
+export.sym: ['-Wl,-u,umotion_']
+export.sym: ['-Wl,-u,umullins_']
+export.sym: ['-Wl,-u,uporep_']
+export.sym: ['-Wl,-u,upress_']
+export.sym: ['-Wl,-u,upsd_']
+export.sym: ['-Wl,-u,urdfil_']
+export.sym: ['-Wl,-u,usdfld_']
+export.sym: ['-Wl,-u,usuperelashardmod_']
+export.sym: ['-Wl,-u,usuperelasplastmod_']
+export.sym: ['-Wl,-u,utemp_']
+export.sym: ['-Wl,-u,utracload_']
+export.sym: ['-Wl,-u,utrs_']
+export.sym: ['-Wl,-u,utrsnetwork_']
+export.sym: ['-Wl,-u,uvarm_']
+export.sym: ['-Wl,-u,uwave_']
+export.sym: ['-Wl,-u,uxfemcrack_']
+export.sym: ['-Wl,-u,uxfemnonlocalweight_']
+export.sym: ['-Wl,-u,voidri_']
+export.sym: ['-Wl,-u,_Z21SMAStsStdU_initializeRi']
+export.sym: ['-Wl,-u,_Z19SMAStsStdU_finalizeRi']
+export.sym: ['-Wl,-u,_Z22SMAStsUsubs_initializeRi']
+export.sym: ['-Wl,-u,_Z20SMAStsUsubs_finalizeRi']
+export.sym: ['-Wl,-u,_Z31SMAStsUsubs_specific_initializeRi']
+export.sym: ['-Wl,-u,_Z29SMAStsUsubs_specific_finalizeRi']
+export.sym: ['-Wl,-u,stdu_callallutils_']
+Linking UMAT.o into user subroutine shared library libstandardU.so
+>>> ifort -V -cxxlib -fPIC -threads -shared -Wl,--add-needed -Wl,-u,contactperm_ -Wl,-u,creep_ -Wl,-u,dflow_ -Wl,-u,dflux_ -Wl,-u,disp_ -Wl,-u,dload_ -Wl,-u,film_ -Wl,-u,flow_ -Wl,-u,fric_ -Wl,-u,fric_coef_ -Wl,-u,gapcon_ -Wl,-u,gapelectr_ -Wl,-u,hardini_ -Wl,-u,hetval_ -Wl,-u,mpc_ -Wl,-u,orient_ -Wl,-u,rsurfu_ -Wl,-u,sdvini_ -Wl,-u,sigini_ -Wl,-u,uamp_ -Wl,-u,uanisohyper_inv_ -Wl,-u,uanisohyper_strain_ -Wl,-u,ucohesiveoffset_ -Wl,-u,ucomputeerefhysteresis_ -Wl,-u,ucomputeporoevolelectrolyte_ -Wl,-u,uconcentrationtensor_ -Wl,-u,ucorr_ -Wl,-u,ucosimulation_ -Wl,-u,ucoupledconstresp_ -Wl,-u,ucrack_ -Wl,-u,ucreepnetwork_ -Wl,-u,udamagemf_ -Wl,-u,udecurr_ -Wl,-u,udecurrent_ -Wl,-u,udempotential_ -Wl,-u,udmgini_ -Wl,-u,udsecurrent_ -Wl,-u,ueigenstrain_ -Wl,-u,uel_ -Wl,-u,uelemdresp_ -Wl,-u,uelmat_ -Wl,-u,uepactivationfacet_ -Wl,-u,uepactivationsetup_ -Wl,-u,uepactivationvol_ -Wl,-u,uexpan_ -Wl,-u,uexternaldb_ -Wl,-u,ufield_ -Wl,-u,ufluid_ -Wl,-u,ufluidconnectorloss_ -Wl,-u,ufluidconnectorvalve_ -Wl,-u,ufluidleakoff_ -Wl,-u,ufluidpipefriction_ -Wl,-u,ugens_ -Wl,-u,uhard_ -Wl,-u,uhypel_ -Wl,-u,uhyper_ -Wl,-u,uhyper_stretch_ -Wl,-u,uinter_ -Wl,-u,uintfluxgen_ -Wl,-u,umasfl_ -Wl,-u,umat_ -Wl,-u,umat_sst_ -Wl,-u,umatht_ -Wl,-u,umdflux_ -Wl,-u,umdfluxsetup_ -Wl,-u,umeshmotion_ -Wl,-u,umixmodefatigue_ -Wl,-u,umotion_ -Wl,-u,umullins_ -Wl,-u,uporep_ -Wl,-u,upress_ -Wl,-u,upsd_ -Wl,-u,urdfil_ -Wl,-u,usdfld_ -Wl,-u,usuperelashardmod_ -Wl,-u,usuperelasplastmod_ -Wl,-u,utemp_ -Wl,-u,utracload_ -Wl,-u,utrs_ -Wl,-u,utrsnetwork_ -Wl,-u,uvarm_ -Wl,-u,uwave_ -Wl,-u,uxfemcrack_ -Wl,-u,uxfemnonlocalweight_ -Wl,-u,voidri_ -Wl,-u,_Z21SMAStsStdU_initializeRi -Wl,-u,_Z19SMAStsStdU_finalizeRi -Wl,-u,_Z22SMAStsUsubs_initializeRi -Wl,-u,_Z20SMAStsUsubs_finalizeRi -Wl,-u,_Z31SMAStsUsubs_specific_initializeRi -Wl,-u,_Z29SMAStsUsubs_specific_finalizeRi -Wl,-u,stdu_callallutils_ -Wl,-soname,libstandardU.so -o libstandardU.so UMAT.o /appl/soft/eng/simulia/EstProducts/2022/linux_a64/code/lib/libstandardU_static.a -L /appl/soft/eng/simulia/EstProducts/2022/linux_a64/code/bin -lABQSMAAncAdbModule -lABQSMAAspSupport -lABQSMAUsubsLib -L/appl/soft/eng/simulia/EstProducts/2022/linux_a64/code/bin/SMAExternal/pmpi/lib/linux_amd64 -lABQDMP_Core -lmpiCC -lABQSMAAbuBasicUtils -lstandardB -lABQSMABasCoreUtils -lABQSMAEliLicenseModule -parallel -Wl,-Bdynamic -shared-intel
+GNU ld (GNU Binutils) 2.38
+End Linking Abaqus/Standard User Subroutines
+Mon 02 Oct 2023 10:20:48 PM EEST
+Begin Analysis Input File Processor
+Mon 02 Oct 2023 10:20:48 PM EEST
+Run pre
+  Command: /appl/soft/eng/simulia/EstProducts/2022/linux_a64/code/bin/pre -standard -messaging_mechanism DIRECT -job geometry -indir /scratch/project_2007935/subroutine -outdir /scratch/project_2007935/subroutine -tmpdir /scratch/project_2007935/subroutine/tmp_18832851/nguyenb5_geometry_2149883 -inputFormat inp -resultsFormat odb -preDecomp -memory 64 -memory_parameter AUTOMATIC -sim /scratch/project_2007935/subroutine/geometry.sim -simwrk /scratch/project_2007935/subroutine/geometry -input geometry -cpus 40 -mp_mode MPI -feature_enhanced -odb_output_requested -convert_sdi -num_std_domains 1 -umbrella_host r07c01.bullx -umbrella_port 40635 -dmp_solver -std_parallel -timeout 36000 -auto_calc_analysis 
+Mon 02 Oct 2023 10:20:59 PM EEST
+Phase Analysis Input File Processor status 0
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+Mon 02 Oct 2023 10:20:59 PM EEST
+Run standard
+  Command: /appl/soft/eng/simulia/EstProducts/2022/linux_a64/code/bin/standard -standard -messaging_mechanism DIRECT -job geometry -input geometry -indir /scratch/project_2007935/subroutine -outdir /scratch/project_2007935/subroutine -tmpdir /scratch/project_2007935/subroutine/tmp_18832851/nguyenb5_geometry_2149883 -inputFormat inp -resultsFormat odb -sim /scratch/project_2007935/subroutine/geometry.sim -simwrk /scratch/project_2007935/subroutine/geometry -preDecomp -memory 80 -memory_parameter AUTOMATIC -lmsuspend -umbrella_port 40635 -umbrella_host r07c01.bullx -cpus 40 -std_parallel -dmp_solver -order_parallel -auto_calc_analysis -timeout 3600 
+Mon 02 Oct 2023 10:21:06 PM EEST
+Phase Abaqus/Standard Analysis status 0
+End Abaqus/Standard Analysis
+RESULTSFORMAT: ODB
+SIMMODE: SFS
+SIMEXT: .sim
+Begin SIM Wrap-up
+Mon 02 Oct 2023 10:21:07 PM EEST
+Run SMASimUtility
+  Command: /appl/soft/eng/simulia/EstProducts/2022/linux_a64/code/bin/SMASimUtility wrap SFS /scratch/project_2007935/subroutine/geometry 
+Mon 02 Oct 2023 10:21:07 PM EEST
+Phase SIM Wrap-up status 0
+End SIM Wrap-up
+> Begin cleanup 
+> End cleanup  -- 00:00:00
+Abaqus JOB geometry COMPLETED
+Running with MPI
+Running: /appl/soft/eng/simulia/EstProducts/2022/linux_a64/code/bin/eliT_CheckLicense
+Arguments: ['-standard', '-cpus', '40', '-location', '-indir', '/scratch/project_2007935/subroutine', '-job', 'geometry']
+License for standard is available.
