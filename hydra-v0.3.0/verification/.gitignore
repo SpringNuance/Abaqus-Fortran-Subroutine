@@ -1,0 +1,18 @@
+# abaqus output files
+*.com
+*.dat
+*.msg
+*.odb
+*.fil
+*.prt
+*.sim
+*.sta
+*.mdl
+*.023
+*.stt
+*.log
+*.par
+*.pes
+*.pmg
+*.SMAManifest
+abaqus.rpy*

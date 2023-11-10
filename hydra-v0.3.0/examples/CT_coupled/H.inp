@@ -1,0 +1,67 @@
+*Heading
+traction Hydrogen Coupled
+*PREPRINT, MODEL=NO, HISTORY=NO
+** ----------------------------------------------------------------
+**
+** MESH
+**
+*INCLUDE, INPUT=_mesh.inp
+**
+** MATERIALS
+**
+*INCLUDE, INPUT=_AISI.inp
+*INCLUDE, INPUT=_coh.inp
+*SOLID SECTION, ELSET=HYDRA, MATERIAL=AISI
+9.95,
+*COHESIVE SECTION, ELSET=COHES, RESPONSE=TRACTION SEPARATION, MATERIAL=COH
+1, 9.95
+**
+*INITIAL CONDITIONS, TYPE=TEMPERATURE
+HYDRA, 7.109e+15
+** *INITIAL CONDITIONS, TYPE=FIELD, VAR=1
+** COHES, 1.0
+**
+** ----------------------------------------------------------------
+**
+** initial boundary conditions/equations
+**
+*BOUNDARY
+       SYM, 2, 2, 0.0
+      HOLE, 1, 1, 0.0
+*EQUATION
+ 2
+ EQIMAG, 1, 1.0, EQREAL, 1, -1.0
+**
+**
+**
+** output
+*NSET, NSET=D5
+ 328321,
+*NSET, NSET=OUTH
+ COR_SW, TIP, D5,
+**
+**
+*STEP, name=Step-1, nlgeom=NO, inc=10000000
+*Coupled Temperature-displacement, creep=none
+5.E-2, 600.,
+*BOUNDARY
+ BOUNDARY, 11, 11, 7.109e+15
+      SYM, 2, 2, 0.0
+     HOLE, 2, 2, 0.22
+*Output, field, frequency=20, variable=PRESELECT 
+*Element Output, directions=YES
+UVARM
+*Element Output, Elset=COHES
+SDV
+*Element Output, Elset=HYDRA
+SDV
+**
+*EL FILE,ELSET=HYDRA,POSITION=AVERAGED 
+SINV,UVARM
+** 
+*Output, history, frequency=20, variable=PRESELECT
+*Node Output, nset=HOLE
+RF2,
+*NODE OUTPUT, NSET=OUTH
+U2
+*End Step

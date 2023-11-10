@@ -1,0 +1,54 @@
+*HEADING
+no Hydrogen, TSL over nominal Area
+*PREPRINT, MODEL=YES, HISTORY=YES
+** ----------------------------------------------------------------
+**
+** mesh
+**
+*INCLUDE, INPUT=_mesh.inp
+**
+** MATERIALS
+**
+*INCLUDE, INPUT=_AISI.inp
+*INCLUDE, INPUT=_coh.inp
+**
+*SOLID SECTION, ELSET=SOLID, MATERIAL=AISI
+10.,
+**
+*COHESIVE SECTION, ELSET=COHES, RESPONSE=TRACTION SEPARATION, MATERIAL=COH
+1.,10.
+** ----------------------------------------------------------------
+**
+** initial boundary conditions/equations
+**
+*BOUNDARY
+** symmetry conditions
+SOLID-W, 1, 1, 0.0
+COHES-W, 1, 1, 0.0
+COHES-S, 2, 2, 0.0
+** ----------------------------------------------------------------
+**
+** STEP: Step-1
+**
+*STEP, NAME=Step-1, INC=1000
+displacement-controlled traction
+*STATIC
+0.005, 1, 1E-6, 0.005
+**
+** BOUNDARY CONDITIONS
+**
+*BOUNDARY
+SOLID-N, 2, 2, 0.03
+**
+** OUTPUT REQUESTS
+**
+*OUTPUT, FIELD, VARIABLE=PRESELECT
+*OUTPUT, HISTORY, VARIABLE=PRESELECT
+*OUTPUT, HISTORY
+*ELEMENT OUTPUT, ELSET=COHES
+E, S, MAXECRT, SDEG, STATUS
+*ELEMENT OUTPUT, ELSET=SOLID
+E, PE, S
+*NODE OUTPUT, NSET=ALL
+U
+*END STEP

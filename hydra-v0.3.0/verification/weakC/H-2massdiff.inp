@@ -1,0 +1,52 @@
+*HEADING
+Two-dimensional element
+SI Units
+X axis horizontal, Y axis vertical
+** ----------------------------------------------------------------
+**
+** variable parameters
+**
+*PARAMETER
+nnc0 = 21.127
+** ----------------------------------------------------------------
+*INCLUDE, INPUT=_geometry.inp
+*INCLUDE, INPUT=_solid-2massdiff.inp
+** 
+** MATERIALS
+** 
+*INCLUDE, INPUT=_AISI.inp
+*DIFFUSIVITY
+1.0e-03, 0.
+*KAPPA, TYPE=PRESS
+     0.,    0.
+ 11.466, 1000.
+*SOLUBILITY
+ 0.071,
+**
+*PHYSICAL CONSTANTS, ABSOLUTE ZERO=0.
+*INITIAL CONDITIONS, TYPE=TEMPERATURE
+HYDRA, 296.15
+*INITIAL CONDITIONS, TYPE=PRESSURE STRESS, FILE=H-1static
+*INITIAL CONDITIONS, TYPE=CONCENTRATION
+HYDRA, <nnc0>
+**
+** ----------------------------------------------------------------
+** 
+** STEP: Step-1
+** 
+*STEP, NAME=Step-1
+*MASS DIFFUSION, END=PERIOD, DCMAX=0.3
+10., 600., 0.006, 10.,
+**
+** BOUNDARY CONDITIONS
+** 
+*BOUNDARY
+CONC, 11, 11, <nnc0>
+**
+** OUTPUT REQUESTS
+**
+** FIELD OUTPUT: F-Output-2
+** 
+*OUTPUT, FIELD, VARIABLE=PRESELECT
+*OUTPUT, HISTORY, VARIABLE=PRESELECT
+*END STEP

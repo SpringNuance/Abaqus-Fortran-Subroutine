@@ -1,0 +1,49 @@
+*HEADING
+Two-dimensional element
+SI Units
+X axis horizontal, Y axis vertical
+** ----------------------------------------------------------------
+*INCLUDE, INPUT=_geometry.inp
+*INCLUDE, INPUT=_solid.inp
+** 
+** MATERIALS
+** 
+*INCLUDE, INPUT=_AISI.inp
+** fictitious density, used for defining GRAV in *DLOAD card below
+*DENSITY
+1.0
+** ----------------------------------------------------------------
+** 
+** STEP: Step-1
+** 
+*STEP, NAME=Step-1
+Static preload
+*STATIC
+1.0, 1.0,
+**
+** BOUNDARY CONDITIONS
+** 
+*BOUNDARY
+YDISPL, 2, 2, 0.0
+XDISPL, 1, 1, 0.0
+*BOUNDARY
+** Name: Load-1   Type: Gravity Using Field: AnalyticalField-1
+*DLOAD
+2, GRAV, 142.5, 0., 1.
+3, GRAV, 127.5, 0., 1.
+4, GRAV, 112.5, 0., 1.
+5, GRAV, 97.5, 0., 1.
+6, GRAV, 82.5, 0., 1.
+7, GRAV, 67.5, 0., 1.
+8, GRAV, 57.5, 0., 1.
+9, GRAV, 37.5, 0., 1.
+10, GRAV, 22.5, 0., 1.
+11, GRAV, 7.5, 0., 1.
+**
+** OUTPUT REQUESTS
+**
+*EL FILE, POSITION=AVERAGED AT NODES
+SINV,
+*OUTPUT, FIELD, VARIABLE=PRESELECT
+*OUTPUT, HISTORY, VARIABLE=PRESELECT
+*END STEP

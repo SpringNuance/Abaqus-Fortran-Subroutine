@@ -1,0 +1,45 @@
+*HEADING
+traction Hydrogen
+*PREPRINT, MODEL=NO, HISTORY=NO
+** ----------------------------------------------------------------
+**
+** mesh
+**
+*INCLUDE, INPUT=_mesh_sa.inp
+**
+** MATERIALS
+**
+*INCLUDE, INPUT=_AISI.inp
+**
+*SOLID SECTION, ELSET=SOLID, MATERIAL=AISI
+9.95,
+** ----------------------------------------------------------------
+**
+** initial boundary conditions/equations
+**
+*BOUNDARY
+      EQREAL, 2, 2, 0.0
+      HOLE, 1, 1, 0.0
+**
+**
+**
+** output
+*NSET, NSET=D5
+ 328321,
+*NSET, NSET=OUTH
+ COR_SW, TIP, D5,
+**
+**
+*STEP, INC=500
+*STATIC
+0.1,1.0,1e-5,0.1
+*BOUNDARY
+ HOLE, 2, 2, 0.05
+*EL FILE, POSITION=AVERAGED AT NODES
+SINV,
+*OUTPUT, FIELD, VARIABLE=PRESELECT
+*OUTPUT, HISTORY, VARIABLE=PRESELECT
+*OUTPUT, HISTORY
+*NODE OUTPUT, NSET=OUTH
+U
+*END STEP

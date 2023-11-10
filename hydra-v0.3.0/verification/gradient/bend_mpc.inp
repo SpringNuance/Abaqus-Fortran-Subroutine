@@ -1,0 +1,128 @@
+************************************************************************
+**
+** node grid
+**
+** 20 x 20
+** Dnx = 1    (see *NGEN below)
+** Dny = 21   (see *NFILL below)
+**
+** Element sets:
+** HYDRA: all elements
+** A0, A1: refinement regions
+**
+************************************************************************
+**
+** NODEs grid
+**
+*NODE, NSET=CORNERS
+        1,  0.0,  0.0
+       21,  1.0,  0.0
+      421,  0.0,  1.0
+      441,  1.0,  1.0
+*NGEN, NSET=BOT
+        1,   21,  1,
+*NGEN, NSET=TOP
+      421,  441,  1,
+*NFILL
+ BOT, TOP, 20, 21
+*NSET, NSET=HYDRA, GENERATE
+        1,  441,  1
+*NSET, NSET=SYM_X, GENERATE
+        1,   21,   1
+*NSET, NSET=ASYM_Y, GENERATE
+        1,  421,   21
+**
+** solid ELEMENTs mesh
+**
+*ELSET, ELSET=HYDRA, GENERATE
+     1, 175,   1
+*ELSET, ELSET=SYM_X, GENERATE
+     1, 10,   1
+*ELSET, ELSET=ASYM_Y, GENERATE
+     1,   41, 10
+    76, 166, 10
+*ELEMENT, TYPE=CPE4R, ELSET=M0
+     1,   1,   3,  45,  43
+	51, 221, 223, 265, 263
+*ELGEN, ELSET=A0
+     1,  10,   2,   1,   5,  42,  10
+	51,   5,   2,   1,   5,  42,  5
+*ELEMENT, TYPE=CPE4R, ELSET=M1
+    76, 211, 212, 233, 232
+*ELGEN, ELSET=A1
+    76,  10,   1,   1,  10,  21,  10
+*ELSET, ELSET=HLOAD, GENERATE
+     10,   50, 10
+     55,   75,  5
+**
+** linear refinement MPC definition
+**
+*NSET, NSET=MPC_A, GENERATE, UNSORTED
+   211, 219,  2
+   221, 389, 42
+*NSET, NSET=MPC_B, GENERATE, UNSORTED
+   213, 221,  2
+   263, 431, 42
+*NSET, NSET=MPC_P, GENERATE, UNSORTED
+   212, 220,  2
+   242, 410, 42
+*MPC
+LINEAR, MPC_P, MPC_A, MPC_B
+**
+** Section: Section-1
+*Solid Section, elset=HYDRA, material=Material-1
+1.,
+** MATERIALS
+**
+*Material, name=Material-1
+*Elastic
+1., 0.3
+*USER OUTPUT VARIABLES
+2
+** ----------------------------------------------------------------
+**
+** STEP: Step-1
+**
+*Step, name=Step-1
+*Static, direct
+0.1, 1.,
+**
+** BOUNDARY CONDITIONS
+*Boundary
+ SYM_X, XSYMM
+ASYM_Y, YASYMM
+     1, 2,2,0.0
+**
+**LOADS
+**
+** Name: Load-1   Type: Pressure Using Field: AnalyticalField-1
+*Cload
+21, 1, 0.00166667
+63, 1, 0.01000000
+105, 1, 0.02000000
+147, 1, 0.03000000
+189, 1, 0.04000000
+231, 1, 0.05000000
+273, 1, 0.06000000
+315, 1, 0.07000000
+357, 1, 0.08000000
+399, 1, 0.09000000
+441, 1, 0.04833333
+**
+** OUTPUT REQUESTS
+**
+*Restart, write, frequency=0
+**
+** FIELD OUTPUT: F-Output-1
+**
+*Output, field
+*Element Output, directions=YES
+UVARM,
+*Output, field, variable=PRESELECT
+*EL FILE,ELSET=HYDRA,POSITION=AVERAGED
+SINV,UVARM
+**
+** HISTORY OUTPUT: H-Output-1
+**
+*Output, history, variable=PRESELECT
+*End Step

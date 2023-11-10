@@ -17,6 +17,8 @@ SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD, &
 !           UMAT FOR ISOTROPIC ELASTICITY
 !           CANNOT BE USED FOR PLANE STRESS
 ! -----------------------------------------------------------
+!        PROPS(1) = E
+!        PROPS(2) = NU
 !        ELASTIC PROPERTIES
 !
     one = 1.0	

@@ -1,0 +1,55 @@
+*HEADING
+Two-dimensional element
+SI Units
+X axis horizontal, Y axis vertical
+** ----------------------------------------------------------------
+*INCLUDE, INPUT=_geometry.inp
+*INCLUDE, INPUT=_solid.inp
+*INCLUDE, INPUT=_cohes.inp
+** equation for mirror nodes
+*INCLUDE, INPUT=_equation.inp
+** 
+** MATERIALS
+** 
+*INCLUDE, INPUT=_AISI.inp
+*USER OUTPUT VARIABLES
+4
+*INCLUDE, INPUT=_coh-H.inp
+**
+*INITIAL CONDITIONS, TYPE=FIELD, VARIABLE=1
+HYDRA, 1.0
+COHES, 1.0
+*INITIAL CONDITIONS, TYPE=FIELD, VARIABLE=2, FILE=H-2massdiff, OUTPUT VARIABLE=NNC, INTERPOLATE
+** ----------------------------------------------------------------
+** 
+** STEP: Step-1
+** 
+*STEP, NAME=Step-1, INC=300
+*STATIC, STABILIZE
+0.005, 1, 1e-10, 0.01
+**
+** BOUNDARY CONDITIONS
+** 
+*BOUNDARY
+YDISPL1, 2, 2, 0.0
+XDISPL, 1, 1, 0.0
+*BOUNDARY
+LOAD, 2, 2, 0.09
+**
+** OUTPUT REQUESTS
+**
+*OUTPUT, FIELD, VARIABLE=PRESELECT
+*OUTPUT, HISTORY, VARIABLE=PRESELECT
+*OUTPUT, FIELD
+*ELEMENT OUTPUT
+UVARM
+*ELEMENT OUTPUT, ELSET=COHES
+SDV
+*OUTPUT, HISTORY
+*ELEMENT OUTPUT, ELSET=COHES
+E, S, MAXECRT, SDEG, STATUS, SDV
+*ELEMENT OUTPUT, ELSET=HYDRA-HIST
+E, PE, S
+*NODE OUTPUT, NSET=NHIST
+U2
+*END STEP

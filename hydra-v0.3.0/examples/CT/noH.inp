@@ -1,0 +1,51 @@
+*HEADING
+traction no Hydrogen
+*PREPRINT, MODEL=NO, HISTORY=NO
+** ----------------------------------------------------------------
+**
+** mesh
+**
+*INCLUDE, INPUT=_mesh.inp
+**
+** MATERIALS
+**
+*INCLUDE, INPUT=_AISI.inp
+*INCLUDE, INPUT=_coh.inp
+**
+*SOLID SECTION, ELSET=SOLID, MATERIAL=AISI
+10.,
+*COHESIVE SECTION, ELSET=COHES, RESPONSE=TRACTION SEPARATION, MATERIAL=COH
+1, 10.0
+** ----------------------------------------------------------------
+**
+** initial boundary conditions/equations
+**
+*BOUNDARY
+       SYM, 2, 2, 0.0
+      HOLE, 1, 1, 0.0
+*EQUATION
+ 2
+ EQIMAG, 1, 1.0, EQREAL, 1, -1.0
+**
+**
+**
+** output
+*NSET, NSET=D5
+ 328321,
+*NSET, NSET=OUTH
+ COR_SW, TIP, D5,
+**
+**
+*STEP, INC=500
+*STATIC
+0.015625,1.0,1e-5,0.1
+*BOUNDARY
+ HOLE, 2, 2, 0.8
+*OUTPUT, FIELD, VARIABLE=PRESELECT
+*OUTPUT, HISTORY, VARIABLE=PRESELECT
+*ELEMENT OUTPUT, ELSET=COHES
+E, S, MAXECRT, SDEG, STATUS
+*OUTPUT, HISTORY
+*NODE OUTPUT, NSET=OUTH
+U
+*END STEP
