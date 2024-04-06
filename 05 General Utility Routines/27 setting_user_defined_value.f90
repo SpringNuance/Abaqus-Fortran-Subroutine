@@ -1,0 +1,1 @@
+ CALL SETALLUSER(userValue)

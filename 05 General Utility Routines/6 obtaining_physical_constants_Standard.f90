@@ -1,0 +1,3 @@
+include 'aba_phcon_param.inc'
+...
+call GETPHYSICALCONSTANT (jKey, value, jError)
